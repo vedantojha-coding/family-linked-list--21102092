@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+    string name;
+    int age;
+    node *next;
+    node *prev;
+    node(string s,int x){
+        name = s;
+        age = x;
+        next = NULL;
+        prev = NULL;
+    }
+};
+
+void printlist(node *head){
+    while(head!=NULL){
+        cout<<head->name<<" "<<head->age<<" - ";
+        head = head->next;
+    }
+    cout<<"NULL";
+
+}
+
+
+
+int main(){
+
+    node *father = new node("Dhananjay ojha",44);
+    node *mother = new node("Rekha Devi",40);
+    node *myself = new node("Vedant ojha",20);
+    node *sister = new node("Khushi",17);
+    node *sister1 = new node("Bhumi",14);
+    
+
+    node *head = father ;
+
+    father->prev=NULL;
+    father->next=mother;
+    mother->prev=father;
+    mother->next=myself;
+    myself->prev=mother;
+    myself->next=sister;
+    sister->prev=myself;
+
+    sister->next=sister1;
+    sister1->prev=sister;
+    sister1->next=NULL;
+
+
+
+    printlist(head);
+    return 0;
+}
